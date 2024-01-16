@@ -13,10 +13,14 @@ The goal of this extension is to simplify the process of retrieving data out of 
 It returns `EndpointDataReference` object, hiding all the communication details for contract offers,
 contract negotiation, transfer process and retrieving the underlying data through the data-planes.
 
-## CX OAuth2
+# Data Plane HTTP OAuth2
 
-This extension enables OAuth2 authentication between EDC connectors,
-instead of the more complex authentication flow used by core EDC.
+The Data Plane HTTP OAuth2 extension permits the data-plane to fetch the data requested from a consumer from an HTTP server
+with an OAuth2 authentication layer.
+
+For further documentation, please refer to the extension README:
+<https://github.com/eclipse-edc/Connector/tree/main/extensions/data-plane/data-plane-http-oauth2-core>
+
 
 ## Data Encryption
 
