@@ -1,9 +1,10 @@
 # Development Documentation
 
 - [Coding principles](coding-principles.md)
+- [Project Structure](project_structure.md)
+- [Repository Structure](repository_structure.md)
 - [Decision Records](decision-records)
 - [Release](Release.md)
 
-## Deep Dives
-- [EDR Api Overview](edr-api-overview.md)
+
 

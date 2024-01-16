@@ -2,11 +2,17 @@
 
 ## Introduction
 
-The **Endpoint Data Reference** serves the purpose of streamlining the consumer connector operators' interactions. Through its API, acts as a facade for two fundamental processes involved in Asset consumption: **contract negotiation** and **transfer process** initialization and additionally, it enables the management of **EDR**s (Endpoint Data References).
+The **Endpoint Data Reference** serves the purpose of streamlining the consumer connector operators' interactions. 
+Through its API, acts as a facade for two fundamental processes involved in Asset consumption: **contract negotiation** 
+and **transfer process** initialization and additionally, it enables the management of **EDR**s (Endpoint Data References).
 
 ## Configuration
 
-The new API is seamlessly deployed under the well-known management API context, requiring no additional configuration. However, this is not the case for the EDR Cache storage. The EDR Cache provides two implementations: `InMemory` and `SQL`. The `edc-runtime-memory` bundle utilizes the `InMemory` implementation for the EDR Cache without any extra setup. On the other hand, the SQL Cache, found in the `edc-controlplane-postgresql-*` bundles, utilizes the SQL implementation and requires database access for schema migration and data management.
+The new API is seamlessly deployed under the well-known management API context, requiring no additional configuration. 
+However, this is not the case for the EDR Cache storage. The EDR Cache provides two implementations: `InMemory` and `SQL`. 
+The `edc-runtime-memory` bundle utilizes the `InMemory` implementation for the EDR Cache without any extra setup. 
+On the other hand, the SQL Cache, found in the `edc-controlplane-postgresql-*` bundles, utilizes the SQL implementation 
+and requires database access for schema migration and data management.
 
 | property                                                  | description                                          | required | default value |
 |-----------------------------------------------------------|------------------------------------------------------|----------|---------------|
