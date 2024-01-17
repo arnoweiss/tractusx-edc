@@ -10,7 +10,7 @@ endpoints of the EDC Management API,
 ## Asset
 
 An asset represents data (databases, files, cache information, etc.) which should be published and shared between
-organizations. For each asset, a [`DataAddress`](#data-address) needs to be resolvable. Its [API is documented](01_MGMT_API_Walkthrough/01_assets.md) 
+organizations. For each asset, a [`DataAddress`](#data-address) needs to be resolvable. Its [API is documented](management_api_walkthrough/01_assets.md) 
 in the Management API Walkthrough.
 
 ## Data Address
@@ -29,7 +29,7 @@ passes several stages which are explained below:
 Contract definitions associate a policy with assets. A `ContractDefinition` object contains an access policy, a contract
 policy, and an asset selector which links the contract to one or more assets.
 
-Its [API is documented](01_MGMT_API_Walkthrough/03_contractdefinitions.md) in the Management API Walkthrough.
+Its [API is documented](management_api_walkthrough/03_contractdefinitions.md) in the Management API Walkthrough.
 
 ### Contract Offer
 
@@ -46,7 +46,7 @@ generate three `ContractOffer` objects).
 A `ContractNegotiation` captures the current state of the negotiation of a contract (`ContractOffer` ->
 `ContractAgreement`) between two parties. This process is inherently asynchronous.
 
-Its [API is documented](01_MGMT_API_Walkthrough/05_contractnegotiations.md) in the Management API Walkthrough.
+Its [API is documented](management_api_walkthrough/05_contractnegotiations.md) in the Management API Walkthrough.
 
 ### Contract Agreement
 
@@ -58,7 +58,7 @@ participants, including a start and an end date and further relevant information
 Contract policies represent permitted and prohibited actions over a certain asset. These actions can be limited further
 by constraints (temporal or spatial) and duties ("e.g. deletion of the data after 30 days").
 
-They can be created via the [Policy Definition API](01_MGMT_API_Walkthrough/02_policies.md).
+They can be created via the [Policy Definition API](management_api_walkthrough/02_policies.md).
 
 ## Transfer Process
 
@@ -69,7 +69,7 @@ as well as information about the [data destination](#data-address).
 Similar to the `ContractNegotiation`, this object captures the current state of a data transfer. This process is
 inherently asynchronous, so the `TransferProcess` objects are stored in a backing data store (`TransferProcessStore`).
 
-Transfer Processes can be triggered and monitored via the [Transfer Processes API](01_MGMT_API_Walkthrough/06_transferprocesses.md).
+Transfer Processes can be triggered and monitored via the [Transfer Processes API](management_api_walkthrough/06_transferprocesses.md).
 
 ## NOTICE
 
