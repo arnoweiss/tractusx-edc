@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2024 Bayerische Motoren Werke Aktiengesellschaft
+ * Copyright (c) 2025 SAP SE
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -26,9 +27,13 @@ import static java.lang.String.format;
 public interface TxIatpConstants {
 
     String CREDENTIAL_TYPE_NAMESPACE = "org.eclipse.tractusx.vc.type";
-    String DEFAULT_CREDENTIAL = "MembershipCredential";
+    String MEMBERSHIP_CREDENTIAL = "MembershipCredential";
+    String DATA_EXCHANGE_GOVERNANCE_CREDENTIAL = "DataExchangeGovernanceCredential";
+    String BPN_CREDENTIAL = "BpnCredential";
     String READ_OPERATION = "read";
-    String DEFAULT_MEMBERSHIP_SCOPE = format("%s:%s:%s", CREDENTIAL_TYPE_NAMESPACE, DEFAULT_CREDENTIAL, READ_OPERATION);
-    Set<String> DEFAULT_SCOPES = Set.of(DEFAULT_MEMBERSHIP_SCOPE);
+    String MEMBERSHIP_SCOPE = format("%s:%s:%s", CREDENTIAL_TYPE_NAMESPACE, MEMBERSHIP_CREDENTIAL, READ_OPERATION);
+    String DATA_EXCHANGE_GOVERNANCE_SCOPE = format("%s:%s:%s", CREDENTIAL_TYPE_NAMESPACE, DATA_EXCHANGE_GOVERNANCE_CREDENTIAL, READ_OPERATION);
+    String BPN_SCOPE = format("%s:%s:%s", CREDENTIAL_TYPE_NAMESPACE, BPN_CREDENTIAL, READ_OPERATION);
+    Set<String> DEFAULT_SCOPES = Set.of(MEMBERSHIP_SCOPE, DATA_EXCHANGE_GOVERNANCE_SCOPE, BPN_SCOPE);
 
 }

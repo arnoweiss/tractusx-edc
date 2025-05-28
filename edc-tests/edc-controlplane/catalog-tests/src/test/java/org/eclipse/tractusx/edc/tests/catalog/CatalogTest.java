@@ -1,5 +1,6 @@
 /********************************************************************************
  * Copyright (c) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+ * Copyright (c) 2025 SAP SE
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -43,6 +44,8 @@ import static org.eclipse.tractusx.edc.tests.TestRuntimeConfiguration.PROVIDER_N
 import static org.eclipse.tractusx.edc.tests.helpers.CatalogHelperFunctions.getDatasetAssetId;
 import static org.eclipse.tractusx.edc.tests.helpers.CatalogHelperFunctions.getDatasetPolicies;
 import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.BUSINESS_PARTNER_LEGACY_EVALUATION_KEY;
+import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.DATA_EXCHANGE_GOVERNANCE_1;
+import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.FRAMEWORK_EVALUATION_KEY;
 import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.bnpPolicy;
 import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.bpnGroupPolicy;
 import static org.eclipse.tractusx.edc.tests.helpers.PolicyHelperFunctions.frameworkPolicy;
@@ -162,6 +165,33 @@ public class CatalogTest {
             var catalog = CONSUMER.getCatalogDatasets(PROVIDER);
             assertThat(catalog).hasSize(2);
         }
+
+        @Test
+        @DisplayName("Verify that the consumer receives only the offers he is permitted to (using the DataExchangeGovernance validation)")
+        void requestCatalog_filteredFramework_shouldReturnOffer() {
+
+            var onlyOtherBpnPolicy = bnpPolicy("BPN1");
+            var onlyGovernancePolicy = frameworkPolicy(Map.of(FRAMEWORK_EVALUATION_KEY, DATA_EXCHANGE_GOVERNANCE_1));
+
+
+            var bpnPolicyId = PROVIDER.createPolicyDefinition(onlyOtherBpnPolicy);
+            var governancePolicyId = PROVIDER.createPolicyDefinition(onlyGovernancePolicy);
+            var noConstraintPolicyId = PROVIDER.createPolicyDefinition(noConstraintPolicy());
+
+            PROVIDER.createAsset("test-asset1");
+            PROVIDER.createAsset("test-asset2");
+            PROVIDER.createAsset("test-asset3");
+
+            PROVIDER.createContractDefinition("test-asset1", "def1", bpnPolicyId, noConstraintPolicyId);
+            PROVIDER.createContractDefinition("test-asset2", "def2", governancePolicyId, noConstraintPolicyId);
+            PROVIDER.createContractDefinition("test-asset3", "def3", noConstraintPolicyId, noConstraintPolicyId);
+
+
+            // act
+            var catalog = CONSUMER.getCatalogDatasets(PROVIDER);
+            assertThat(catalog).hasSize(2);
+        }
+
 
         @Test
         @DisplayName("Multiple ContractDefinitions exist for one Asset")

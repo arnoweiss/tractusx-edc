@@ -1,5 +1,6 @@
 /********************************************************************************
  * Copyright (c) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+ * Copyright (c) 2025 SAP SE
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -48,6 +49,8 @@ import static org.eclipse.edc.spi.constants.CoreConstants.EDC_NAMESPACE;
 public class PolicyHelperFunctions {
 
     public static final String TX_NAMESPACE = "https://w3id.org/tractusx/v0.0.1/ns/";
+    public static final String FRAMEWORK_EVALUATION_KEY = "https://w3id.org/catenax/policy/FrameworkAgreement";
+    public static final String DATA_EXCHANGE_GOVERNANCE_1 = "DataExchangeGovernance:1.0";
     private static final String ODRL_JSONLD = "http://www.w3.org/ns/odrl.jsonld";
     private static final String BUSINESS_PARTNER_EVALUATION_KEY = "BusinessPartnerNumber";
 
